@@ -42,6 +42,7 @@ pub fn expand(input: &DeriveInput, trait_name: &'static str) -> Result<TokenStre
             Fields::Unit => quote! {},
         };
         let func = quote! {
+            /// Returns true if this is #enum_name ::#variant_ident
             pub fn #fn_name(&self) -> bool {
                 match self {
                     #enum_name ::#variant_ident #data_pattern => true,
